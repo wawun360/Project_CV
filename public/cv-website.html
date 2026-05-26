@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alwan Muzakhi - Information Technology Student | UI/UX Enthusiast">
+    <title>Alwan Muzakhi - CV Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A192F;
+            color: #E6F1FF;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 0.7rem 5%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #64FFDA;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .logo:hover {
+            color: #ffffff;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #E6F1FF;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #64FFDA;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #64FFDA;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #64FFDA;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* ===== SECTION STYLES ===== */
+        section {
+            padding: 6rem 5%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 60px;
+        }
+        
+        #home {
+            margin-top: 0;
+            padding-top: 6rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #64FFDA;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #64FFDA, #0A192F);
+        }
+        
+        /* ===== HERO SECTION ===== */
+        #home {
+            align-items: center;
+            text-align: center;
+        }
+        
+        .profile-photo-container {
+            margin-bottom: 2rem;
+            animation: fadeInDown 1s ease;
+        }
+        
+        /* IMPORTANT: REPLACE photo.jpg WITH YOUR OWN PHOTO FILE */
+        #profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #64FFDA;
+            box-shadow: 0 0 30px rgba(100, 255, 218, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        #profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(100, 255, 218, 0.8);
+        }
+        
+        .hero-content {
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #E6F1FF;
+        }
+        
+        .hero-content h2 {
+            font-size: 1.5rem;
+            color: #64FFDA;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #8892B0;
+            line-height: 1.8;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            border: 2px solid #64FFDA;
+        }
+        
+        .btn-primary {
+            background-color: #64FFDA;
+            color: #0A192F;
+        }
+        
+        .btn-primary:hover {
+            background-color: transparent;
+            color: #64FFDA;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(100, 255, 218, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: #64FFDA;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(100, 255, 218, 0.2);
+        }
+        
+        /* ===== ABOUT SECTION ===== */
+        #about {
+            background-color: rgba(17, 34, 64, 0.4);
+        }
+        
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            color: #8892B0;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .highlight-card {
+            background-color: rgba(100, 255, 218, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 3px solid #64FFDA;
+            transition: all 0.3s ease;
+        }
+        
+        .highlight-card:hover {
+            transform: translateX(10px);
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+        
+        .highlight-card i {
+            color: #64FFDA;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-card h3 {
+            color: #E6F1FF;
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-card p {
+            color: #8892B0;
+            font-size: 0.95rem;
+        }
+        
+        /* ===== SKILLS SECTION ===== */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .skills-category h3 {
+            color: #64FFDA;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: #E6F1FF;
+            font-weight: 500;
+        }
+        
+        .skill-bar {
+            background-color: rgba(100, 255, 218, 0.1);
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            background: linear-gradient(to right, #64FFDA, #45D9B8);
+            height: 100%;
+            border-radius: 5px;
+            transition: width 1s ease;
+            box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+        }
+        
+        .soft-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .soft-skill-card {
+            background-color: rgba(100, 255, 218, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+        }
+        
+        .soft-skill-card:hover {
+            transform: translateY(-10px);
+            background-color: rgba(100, 255, 218, 0.1);
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
+        }
+        
+        .soft-skill-card i {
+            font-size: 2.5rem;
+            color: #64FFDA;
+            margin-bottom: 1rem;
+        }
+        
+        .soft-skill-card p {
+            color: #E6F1FF;
+            font-weight: 500;
+        }
+        
+        /* ===== PROJECTS SECTION ===== */
+        #projects {
+            background-color: rgba(17, 34, 64, 0.4);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .project-card {
+            background-color: rgba(17, 34, 64, 0.6);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(100, 255, 218, 0.2);
+            border-color: #64FFDA;
+        }
+        
+        .project-card h3 {
+            color: #64FFDA;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-card p {
+            color: #8892B0;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .project-card ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-card ul li {
+            color: #8892B0;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .project-card ul li::before {
+            content: '▹';
+            color: #64FFDA;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tech-tag {
+            background-color: rgba(100, 255, 218, 0.1);
+            color: #64FFDA;
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+        }
+        
+        /* ===== EDUCATION SECTION ===== */
+        .education-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(17, 34, 64, 0.6);
+            padding: 3rem;
+            border-radius: 10px;
+            border-left: 4px solid #64FFDA;
+        }
+        
+        .education-content h3 {
+            color: #64FFDA;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-content h4 {
+            color: #E6F1FF;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-content .year {
+            color: #8892B0;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .coursework {
+            margin-top: 2rem;
+        }
+        
+        .coursework h5 {
+            color: #64FFDA;
+            margin-bottom: 1rem;
+        }
+        
+        .coursework ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .coursework li {
+            color: #8892B0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .coursework li::before {
+            content: '▹';
+            color: #64FFDA;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+        
+        /* ===== CONTACT SECTION ===== */
+        #contact {
+            background-color: rgba(17, 34, 64, 0.4);
+        }
+        
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #8892B0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-item i {
+            color: #64FFDA;
+            font-size: 1.5rem;
+        }
+        
+        .contact-item:hover {
+            color: #64FFDA;
+        }
+        
+        .contact-form {
+            background-color: rgba(17, 34, 64, 0.6);
+            padding: 2.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #64FFDA;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: rgba(10, 25, 47, 0.8);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            border-radius: 5px;
+            color: #E6F1FF;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #64FFDA;
+            box-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-group button {
+            width: 100%;
+            padding: 0.9rem;
+            background-color: #64FFDA;
+            color: #0A192F;
+            border: 2px solid #64FFDA;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group button:hover {
+            background-color: transparent;
+            color: #64FFDA;
+            transform: translateY(-3px);
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: rgba(10, 25, 47, 0.95);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(100, 255, 218, 0.2);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links a {
+            color: #8892B0;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #64FFDA;
+            transform: translateY(-5px);
+        }
+        
+        footer p {
+            color: #8892B0;
+            font-size: 0.9rem;
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background-color: rgba(10, 25, 47, 0.98);
+                width: 100%;
+                padding: 2rem;
+                gap: 1.5rem;
+                transition: right 0.3s ease;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            section {
+                padding: 4rem 5%;
+            }
+            
+            .contact-info {
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            #profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#home" class="logo">Alwan Muzakhi</a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home">
+        <div class="profile-photo-container">
+            <img id="profile-photo" src="Profile.jpeg" alt="Alwan Muzakhi Profile Photo">
+        </div>
+        <div class="hero-content">
+            <h1>Alwan Muzakhi</h1>
+            <h2>Information Technology Student | UI/UX Enthusiast</h2>
+            <p>
+                I'm an Information Technology student from Medan, North Sumatra, with a deep passion for UI/UX Design. 
+                I believe in creating digital experiences that not only look beautiful but also solve real user problems. 
+                Through continuous learning and hands-on projects, I'm building my expertise in designing intuitive interfaces 
+                that bridge the gap between technology and human needs. My goal is to craft user-centered solutions that make 
+                technology more accessible and enjoyable for everyone.
+            </p>
+            <div class="hero-buttons">
+                <a href="resume.pdf" class="btn btn-primary" download>
+                    <i class="fas fa-download"></i> Download Resume
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i> Contact Me
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <h2 class="section-title fade-in">About Me</h2>
+        <div class="about-content fade-in">
+            <p class="about-text">
+                I'm currently pursuing my Bachelor's degree in Information Technology, having started my academic journey in 2025. 
+                Originally from Medan, North Sumatra, Indonesia, I've always been fascinated by how design and technology intersect 
+                to create meaningful user experiences.
+            </p>
+            <p class="about-text">
+                My primary interest lies in UI/UX Design and human-computer interaction. I enjoy exploring the psychology behind 
+                user behavior and translating those insights into intuitive, aesthetically pleasing interfaces. Beyond design, 
+                I'm also developing my skills in front-end development to better understand the technical implementation of my designs.
+            </p>
+            
+            <div class="about-highlights">
+                <div class="highlight-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Creative Thinking</h3>
+                    <p>Approaching challenges with innovative solutions and fresh perspectives</p>
+                </div>
+                <div class="highlight-card">
+                    <i class="fas fa-eye"></i>
+                    <h3>Attention to Detail</h3>
+                    <p>Ensuring every pixel and interaction contributes to the overall user experience</p>
+                </div>
+                <div class="highlight-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Learner</h3>
+                    <p>Quick to adapt to new technologies, tools, and design methodologies</p>
+                </div>
+                <div class="highlight-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Collaborative</h3>
+                    <p>Thrive in team environments and value diverse perspectives in problem-solving</p>
+                </div>
+                <div class="highlight-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Strong Communication</h3>
+                    <p>Effectively articulating design decisions and presenting ideas clearly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+        <h2 class="section-title fade-in">Skills & Expertise</h2>
+        <div class="skills-container fade-in">
+            <!-- Technical Skills -->
+            <div class="skills-category">
+                <h3><i class="fas fa-code"></i> Technical Skills</h3>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Figma</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="90" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Robotics</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="85" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>HTML & CSS</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="80" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>JavaScript Basics</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="70" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Wireframing & Prototyping</span>
+                        <span>88%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="88" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Responsive Design</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="85" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>CRUD Principles</span>
+                        <span>92%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="92" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soft Skills -->
+            <div class="skills-category">
+                <h3><i class="fas fa-user-check"></i> Soft Skills</h3>
+                <div class="soft-skills-grid">
+                    <div class="soft-skill-card">
+                        <i class="fas fa-palette"></i>
+                        <p>Creative Thinking</p>
+                    </div>
+                    <div class="soft-skill-card">
+                        <i class="fas fa-comments"></i>
+                        <p>Communication</p>
+                    </div>
+                    <div class="soft-skill-card">
+                        <i class="fas fa-handshake"></i>
+                        <p>Teamwork</p>
+                    </div>
+                    <div class="soft-skill-card">
+                        <i class="fas fa-puzzle-piece"></i>
+                        <p>Problem Solving</p>
+                    </div>
+                    <div class="soft-skill-card">
+                        <i class="fas fa-search"></i>
+                        <p>Attention to Detail</p>
+                    </div>
+                    <div class="soft-skill-card">
+                        <i class="fas fa-clock"></i>
+                        <p>Time Management</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <h2 class="section-title fade-in">Experience & Projects</h2>
+        <div class="projects-grid fade-in">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <h3>E-Learning Mobile App Redesign</h3>
+                <p>
+                    Redesigned the user interface for a mobile e-learning application to improve student engagement 
+                    and learning outcomes. The project focused on creating an intuitive navigation system and 
+                    modernizing the visual design while maintaining accessibility standards.
+                </p>
+                <ul>
+                    <li>Conducted user research with 25+ students to identify pain points</li>
+                    <li>Designed high-fidelity mockups and interactive prototypes in Figma</li>
+                    <li>Implemented responsive design principles for various device sizes</li>
+                    <li>Collaborated with developers to ensure design feasibility</li>
+                    <li>Achieved 40% improvement in user satisfaction scores</li>
+                </ul>
+                <div class="project-tech">
+                    <span class="tech-tag">Figma</span>
+                    <span class="tech-tag">User Research</span>
+                    <span class="tech-tag">Prototyping</span>
+                    <span class="tech-tag">UI/UX</span>
+                </div>
+                <a href="#" class="btn btn-secondary"></a>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <h3>Local Restaurant Website</h3>
+                <p>
+                    Developed a fully responsive website for a local restaurant in Medan to enhance their online 
+                    presence and make it easier for customers to browse menus and place orders. The project emphasized 
+                    clean aesthetics and smooth user experience.
+                </p>
+                <ul>
+                    <li>Designed complete wireframes and user flow diagrams</li>
+                    <li>Created a modern, appetizing visual design system</li>
+                    <li>Developed responsive front-end using HTML, CSS, and JavaScript</li>
+                    <li>Implemented smooth animations and transitions for better engagement</li>
+                    <li>Analyzed user behavior to optimize conversion rates</li>
+                </ul>
+                <div class="project-tech">
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Responsive Design</span>
+                </div>
+                <a href="#" class="btn btn-secondary"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education">
+        <h2 class="section-title fade-in">Education</h2>
+        <div class="education-content fade-in">
+            <h3>Bachelor of Information Technology</h3>
+            <h4>Universitas Muhammadiyah Sumatera Utara</h4>
+            <p class="year">2025 – Present</p>
+            
+            <div class="coursework">
+                <h5>Relevant Coursework:</h5>
+                <ul>
+                    <li>Human-Computer Interaction</li>
+                    <li>User Experience Design</li>
+                    <li>Web Development Fundamentals</li>
+                    <li>Database Management Systems</li>
+                    <li>Software Engineering Principles</li>
+                    <li>Mobile Application Development</li>
+                    <li>Information Systems Analysis</li>
+                    <li>Data Structures & Algorithms</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <h2 class="section-title fade-in">Get In Touch</h2>
+        <div class="contact-container fade-in">
+            <div class="contact-info">
+                <a href="mailto:alwanmuzakhi070@email.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>alwanmuzakhi070@email.com</span>
+                </a>
+                <a href="https://www.linkedin.com/in/alwan-muzakhi-143496292?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/alwanmuzakhi" target="_blank" class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/alwan-muzakhi-143496292?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/alwanmuzakhi" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="mailto:alwanmuzakhi070@email.com" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        <p>&copy; 2026 Alwan Muzakhi. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Skill progress bar animation
+        const skillObserverOptions = {
+            threshold: 0.5
+        };
+
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.skill-progress');
+                    progressBars.forEach(bar => {
+                        const progress = bar.getAttribute('data-progress');
+                        bar.style.width = progress + '%';
+                    });
+                    skillObserver.unobserve(entry.target);
+                }
+            });
+        }, skillObserverOptions);
+
+        const skillsSection = document.querySelector('#skills');
+        if (skillsSection) {
+            skillObserver.observe(skillsSection);
+        }
+
+        // Contact form handling
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+
+                // Create mailto link
+                const mailtoLink = `mailto:alwanmuzakhi070@email.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+                
+                window.location.href = mailtoLink;
+                
+                // Reset form
+                contactForm.reset();
+            });
+        }
+    </script>
+</body>
+</html>
