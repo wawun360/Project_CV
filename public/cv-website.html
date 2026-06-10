@@ -1010,24 +1010,25 @@
             <div class="contact-info">
                 <a href="mailto:alwanmuzakhi070@gmail.com" class="contact-item">
                     <i class="fas fa-envelope"></i>
-                    <span>Email</span>
+                    <span>alwanmuzakhi070@gmail.com</span>
                 </a>
-                <a href="https://wa.me/6281315923342" class="contact-item" target="_blank">
-                    <i class="fas fa-whatsapp"></i>
-                    <span>WhatsApp</span>
-                </a>
-                <a href="https://linkedin.com" class="contact-item" target="_blank">
+                <a href="https://linkedin.com/in/alwan-muzakhi" class="contact-item" target="_blank">
                     <i class="fas fa-linkedin"></i>
                     <span>LinkedIn</span>
                 </a>
+                <a href="https://github.com/wawun360" class="contact-item" target="_blank">
+                    <i class="fas fa-github"></i>
+                    <span>GitHub</span>
+                </a>
             </div>
-            <form class="contact-form" id="contactForm">
+            
+            <form class="contact-form">
                 <div class="form-group">
-                    <label for="name">Name</label>
+                    <label for="name">Your Name</label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">Your Email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
@@ -1044,38 +1045,23 @@
     <!-- FOOTER -->
     <footer>
         <div class="social-links">
-            <a href="https://github.com" target="_blank" aria-label="GitHub">
+            <a href="https://github.com/wawun360" target="_blank" aria-label="GitHub">
                 <i class="fab fa-github"></i>
             </a>
-            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+            <a href="https://linkedin.com/in/alwan-muzakhi" target="_blank" aria-label="LinkedIn">
                 <i class="fab fa-linkedin"></i>
             </a>
-            <a href="https://twitter.com" target="_blank" aria-label="Twitter">
-                <i class="fab fa-twitter"></i>
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
             </a>
         </div>
         <p>&copy; 2025 Alwan Muzakhi. All rights reserved.</p>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-
         // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
         window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
@@ -1083,53 +1069,58 @@
             }
         });
 
-        // Fade-in animation on scroll
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Fade in animation on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
         });
 
         // Skill progress animation
-        const skillObserver = new IntersectionObserver((entries) => {
+        const skillProgressElements = document.querySelectorAll('.skill-progress');
+        const skillObserverOptions = {
+            threshold: 0.5
+        };
+
+        const skillObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const skillBars = entry.target.querySelectorAll('.skill-progress');
-                    skillBars.forEach(bar => {
-                        const progress = bar.getAttribute('data-progress');
-                        bar.style.width = progress + '%';
-                    });
+                    const progress = entry.target.getAttribute('data-progress');
+                    entry.target.style.width = progress + '%';
                     skillObserver.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, skillObserverOptions);
 
-        const skillsSection = document.querySelector('#skills');
-        if (skillsSection) {
-            skillObserver.observe(skillsSection);
-        }
-
-        // Form submission
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Thank you for your message! I will get back to you soon.');
-                contactForm.reset();
-            });
-        }
+        skillProgressElements.forEach(element => {
+            skillObserver.observe(element);
+        });
     </script>
 </body>
 </html>
