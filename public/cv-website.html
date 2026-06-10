@@ -1063,6 +1063,21 @@
     </footer>
 
     <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
         // Navbar scroll effect
         const navbar = document.querySelector('.navbar');
         window.addEventListener('scroll', () => {
@@ -1073,28 +1088,13 @@
             }
         });
 
-        // Mobile menu toggle
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-
-        mobileMenuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close menu when a link is clicked
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Fade in animation on scroll
+        // Intersection Observer for fade-in animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(entries => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
@@ -1106,26 +1106,30 @@
             observer.observe(element);
         });
 
-        // Skill progress animation
-        const skillProgressElements = document.querySelectorAll('.skill-progress');
+        // Skill progress bar animation
         const skillObserverOptions = {
             threshold: 0.5
         };
 
-        const skillObserver = new IntersectionObserver(entries => {
+        const skillObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const progress = entry.target.getAttribute('data-progress');
-                    entry.target.style.width = progress + '%';
+                    const progressBars = entry.target.querySelectorAll('.skill-progress');
+                    progressBars.forEach(bar => {
+                        const progress = bar.getAttribute('data-progress');
+                        bar.style.width = progress + '%';
+                    });
                     skillObserver.unobserve(entry.target);
                 }
             });
         }, skillObserverOptions);
 
-        skillProgressElements.forEach(element => {
-            skillObserver.observe(element);
+        const skillsSection = document.querySelector('#skills');
+        if (skillsSection) {
+            skillObserver.observe(skillsSection);
         }
-            // Contact form handling
+
+        // Contact form handling
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
             contactForm.addEventListener('submit', (e) => {
@@ -1143,8 +1147,8 @@
                 
                 // Reset form
                 contactForm.reset();
-            }
-                                     );
+            });
+        }
     </script>
 </body>
 </html>
